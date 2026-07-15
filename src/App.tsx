@@ -21,8 +21,6 @@ function ProtectedRoute({ children, perfil }: { children: React.ReactNode; perfi
 }
 
 function AppRoutes() {
-  const { perfil } = useAuth()
-
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
