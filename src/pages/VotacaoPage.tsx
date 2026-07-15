@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { db } from '../lib/database'
+import { useAuth } from '../lib/AuthContext'
 import type { Vendedora } from '../lib/database'
 import { Star, CheckCircle } from 'lucide-react'
 
 export default function VotacaoPage() {
+  const { logout } = useAuth()
   const [vendedoras, setVendedoras] = useState<Vendedora[]>([])
   const [selecionada, setSelecionada] = useState<Vendedora | null>(null)
   const [estrelas, setEstrelas] = useState(0)
@@ -104,7 +106,13 @@ export default function VotacaoPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #9333ea, #2563eb)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ margin: '0 auto', padding: '32px', maxWidth: '896px' }}>
+      <div style={{ margin: '0 auto', padding: '32px', maxWidth: '896px', position: 'relative' }}>
+        <button
+          onClick={logout}
+          style={{ position: 'absolute', top: '0', right: '0', background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontSize: '14px' }}
+        >
+          Trocar perfil
+        </button>
         <h1 style={{ fontSize: '36px', fontWeight: 'bold', color: 'white', textAlign: 'center', marginBottom: '8px' }}>
           Quem te atendeu?
         </h1>
