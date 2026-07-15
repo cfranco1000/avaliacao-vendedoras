@@ -14,7 +14,7 @@ function ProtectedRoute({ children, perfil }: { children: React.ReactNode; perfi
   }
   
   if (userPerfil !== perfil) {
-    return <Navigate to={userPerfil === 'admin' ? '/admin/dashboard' : '/votacao'} replace />
+    return <Navigate to="/" replace />
   }
   
   return <>{children}</>
